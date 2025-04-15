@@ -45,11 +45,7 @@ def predict():
 
         # Make prediction
         prediction = model.predict(final_input)[0]
-
-    # Convert prediction to INR (Assuming USD to INR rate is 83)
-        inr_price = round(prediction * 83.0, 2)
-
-        return render_template('index.html', prediction_text=f"Predicted Price: ₹{inr_price:,.2f}")
+        return render_template('index.html', prediction_text=f"Predicted Price: ${prediction:,.2f}")
     
     except Exception as e:
         return render_template('index.html', prediction_text=f"Error: {str(e)}")
